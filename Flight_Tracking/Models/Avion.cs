@@ -10,7 +10,7 @@ namespace Flight_Tracking.Models
         public int Id { get; set; }
         public string code { get; set; }
         public string libelle { get; set; }
-        // public int nombrePlace { get; set; }
+        public int nombrePlace { get; set; }
         // public double consomationKM { get; set; }
         // public double consomationDepart { get; set; }
     }

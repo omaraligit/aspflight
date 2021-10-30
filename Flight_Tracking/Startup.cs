@@ -17,6 +17,7 @@ namespace Flight_Tracking
         {
             var db = new FlightContext();
             Configuration = configuration;
+
             Console.WriteLine("db testing ===== ");
             // Note: This sample requires the database to be created before running.
             Console.WriteLine($"Database path: {db.DbPath}.");
