@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    
+
+    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Index">
+        <div class="container">
+            <div class="mb-3">
+                <select class="form-control" name="depart">
+                    @foreach (var Aeroport in (List<Aeroport>)ViewData["Aeroports"])
+                    {
+                        <option value="@Aeroport.id">@Aeroport.libelle</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <select class="form-control" name="arrivee">
+                    @foreach (var Aeroport in (List<Aeroport>)ViewData["Aeroports"])
+                    {
+                        <option value="@Aeroport.id">@Aeroport.libelle</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <select class="form-control" name="avion">
+                    @foreach (var Avion in (List<Avion>)ViewData["Avions"])
+                    {
+                        <option value="@Avion.code">@Avion.libelle</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <input type="datetime-local" class="form-control" placeholder="" name="dateDepart">
+            </div>
+            <div class="mb-3">
+                <input type="datetime-local" class="form-control" placeholder="" name="dateArrivee">
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Enregistrer</button>
+            </div>
+        </div>
+</form>
+
+
+
+
+</div>
