@@ -1,6 +1,26 @@
 ﻿@{
     ViewData["Title"] = "Vol avion";
 }
-<h1>@ViewData["Title"]</h1>
+<div class="container">
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Vol no</th>
+            <th scope="col">Depart</th>
+            <th scope="col">Arrivee</th>
+            <th scope="col">Avion</th>
+            <th scope="col">Date depart</th>
+            <th scope="col">Date arrivee</th>
+            <th scope="col"></th>
+        </tr>
+        @foreach (var vol in (IOrderedQueryable<Vol>)ViewData["vols"])
+        {
+            <tr>
+                <td>@vol.ID</td>
+                <td>@vol.dateDepart</td>
+                <td>@vol.dateArrivee</td>
+                <td><a href="/@vol.ID">Details</a></td>
+            </tr>
+        }
 
-<p>Use this page to detail your site's privacy policy.</p>
+    </table>
+</div>
