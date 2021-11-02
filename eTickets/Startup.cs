@@ -30,7 +30,7 @@ namespace eTickets
         {
 
             //DbContext configuration
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlite("Filename=TestDatabase.db"));
 
             //Services configuration
             services.AddScoped<IActorsService, ActorsService>();
