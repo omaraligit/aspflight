@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Vol>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -8,15 +8,27 @@
 
     <div class="container">
         <table class="table table-bordered">
-            @foreach (var vol in (List<Vol>)ViewData["vols"])
+            <thead>
+                <tr>
+                    <td class="">Vol Id</td>
+                    <td class="">Libelle Avion</td>
+                    <td class="">Aeroport depart</td>
+                    <td class="">Aeroport Arrivee</td>
+                    <td class="">Distqnce du voyage Km</td>
+                    <td class="">View more</td>
+                </tr>
+            </thead>
+            @foreach (var vol in Model)
             {
-            <tr>
-                <td class="">@vol.ID</td>
-                <td class="">@vol.Avion.libelle</td>
-                <td class="">@vol.Aeroport.code</td>
-                <td class="">@vol.Aeroport.code</td>
-                <td class=""><a asp-action="Details" asp-controller="Vol" asp-route-id="@vol.ID">View more</a></td>
-            </tr>
+        <tr>
+            <td class="">@vol.Id</td>
+            <td class="">@vol.Avion.libelle - code. @vol.Avion.code</td>
+            <td class="">@vol.Aeroport.libelle - @vol.Aeroport.code</td>
+            <td class="">@vol.AeroportArrivee.libelle - @vol.Aeroport.code</td>
+            <td class="">@vol.calculerDistance() Km</td>
+
+            <td class=""><a asp-action="Details" asp-controller="Vol" asp-route-id="@vol.Id">View more</a></td>
+        </tr>
             }
         </table>
     </div>

@@ -1,0 +1,21 @@
+﻿@model Vol
+
+@{
+    var vol = (Vol)ViewData["vol"];
+}
+
+<div>
+
+    <h5 class="card-title">Vol de: @Model.Aeroport.libelle -> a destination: @Model.AeroportArrivee.libelle</h5>
+    <p class="card-text">date depart: @Model.dateDepart</p>
+    <p class="card-text">date arrive: @Model.dateArrivee</p>
+    <hr />
+    <p class="card-text">model avion: @Model.Avion.libelle</p>
+    <p class="card-text">totale des place: @Model.Avion.nombrePlace</p>
+    <p class="card-text">consomation vol (Litre par Km): @Model.Avion.consomationKM</p>
+    <p class="card-text">consomation depart: @Model.Avion.consomationDepart</p>
+    <hr />
+    <p class="card-text">Distance du voyage: @Model.calculerDistance() Km</p>
+    <p class="card-text">consomation totale Feul: @Model.calculerConsomationVol() Litre</p>
+
+</div>

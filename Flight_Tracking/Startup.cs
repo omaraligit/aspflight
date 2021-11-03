@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Flight_Tracking.Data.Services;
+
 
 namespace Flight_Tracking
 {
@@ -24,10 +26,11 @@ namespace Flight_Tracking
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<FlightContext>(options => options.UseSqlite("Filename=TestDatabase.db"));
+
+            services.AddScoped<IVolService, VolService>();
+
             services.AddControllersWithViews();
-            var folder = Environment.CurrentDirectory;
-            var DbPath = $"{folder}{System.IO.Path.DirectorySeparatorChar}flights.db";
-            services.AddDbContext<FlightContext>(contextOptions => contextOptions.UseSqlite($"Data Source={DbPath}"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +59,7 @@ namespace Flight_Tracking
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            AppDbInitializer.Seed(app);
         }
     }
 }

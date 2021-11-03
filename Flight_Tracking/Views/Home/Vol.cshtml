@@ -15,10 +15,10 @@
         @foreach (var vol in (IOrderedQueryable<Vol>)ViewData["vols"])
         {
             <tr>
-                <td>@vol.ID</td>
+                <td>@vol.Id</td>
                 <td>@vol.dateDepart</td>
                 <td>@vol.dateArrivee</td>
-                <td><a href="/@vol.ID">Details</a></td>
+                <td><a href="/@vol.Id">Details</a></td>
             </tr>
         }
 
